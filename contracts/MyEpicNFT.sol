@@ -25,6 +25,8 @@ contract MyEpicNFT is ERC721URIStorage {
     // くろがねの 秋の風鈴 鳴りにけり　 飯田蛇笏
     // 赤い椿 白い椿と 落ちにけり 河東碧梧桐
 
+    event NewEpicNFTMinted(address sender, uint256 tokenId);
+
     constructor() ERC721 ("SquareNFT", "SQUARE") {
         console.log("This is my NFT contract.");
     }
@@ -109,5 +111,6 @@ contract MyEpicNFT is ERC721URIStorage {
 
         console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
         _tokenIds.increment();
+        emit NewEpicNFTMinted(msg.sender, newItemId);
     }
 }
